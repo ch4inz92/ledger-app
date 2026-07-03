@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class JournalEntry extends Model
 {
+     use HasFactory;
+
     protected $fillable = ['transaction_id', 'account_id', 'amount', 'type'];
 
      protected static function booted(): void
@@ -31,7 +34,7 @@ class JournalEntry extends Model
             }
         });
     }
-    
+
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);
