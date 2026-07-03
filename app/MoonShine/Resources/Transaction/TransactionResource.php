@@ -33,17 +33,6 @@ class TransactionResource extends ModelResource
             Date::make('Дата', 'date')->required(),
             Text::make('Описание', 'description'),
             Checkbox::make('Проведена', 'posted')->default(false),
-            HasMany::make('Проводки', 'journalEntries')
-                ->fields([
-                    Select::make('Счет', 'account_id')
-                        ->options(Account::pluck('name', 'id')->toArray())
-                        ->required(),
-                    Text::make('Сумма', 'amount')->required(),
-                    Select::make('Тип', 'type')
-                        ->options(['debit' => 'Дебет', 'credit' => 'Кредит'])
-                        ->required(),
-                ]),
-            // убрали все модификаторы
         ];
     }
 
@@ -54,6 +43,14 @@ class TransactionResource extends ModelResource
             Date::make('Дата', 'date'),
             Text::make('Описание', 'description'),
             Checkbox::make('Проведена', 'posted'),
+            HasMany::make('Проводки', 'journalEntries')
+                ->fields([
+                    Select::make('Счет', 'account_id')
+                        ->options(Account::pluck('name', 'id')->toArray()),
+                    Text::make('Сумма', 'amount'),
+                    Select::make('Тип', 'type')
+                        ->options(['debit' => 'Дебет', 'credit' => 'Кредит']),
+                ]),
         ];
     }
 

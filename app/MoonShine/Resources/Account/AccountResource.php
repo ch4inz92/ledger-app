@@ -29,6 +29,7 @@ class AccountResource extends ModelResource
                     'revenue'   => 'Доход',
                     'expense'   => 'Расход',
                 ]),
+            Text::make('Баланс', 'balance'),
             Checkbox::make('Активен', 'is_active'),
         ];
     }
