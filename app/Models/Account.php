@@ -12,4 +12,11 @@ class Account extends Model
     {
         return $this->hasMany(JournalEntry::class);
     }
+
+    public function getBalanceAttribute(): float
+    {
+        $debit = $this->journalEntries()->where('type', 'debit')->sum('amount');
+        $credit = $this->journalEntries()->where('type', 'credit')->sum('amount');
+        return $debit - $credit;
+    }
 }
