@@ -139,4 +139,5 @@ API доступно по адресу /api.
 
 ### Автор
 
-ch4inz92
+Sergey «ch4inz» Gavrik
+
