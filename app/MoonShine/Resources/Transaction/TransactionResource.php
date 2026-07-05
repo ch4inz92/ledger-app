@@ -11,6 +11,9 @@ use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\Select;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\Laravel\Actions\ExportAction;
+use MoonShine\UI\Components\ActionButton;
+use App\MoonShine\Actions\ExportTransactionsAction;
 
 class TransactionResource extends ModelResource
 {
@@ -68,6 +71,25 @@ class TransactionResource extends ModelResource
             'date' => ['required', 'date'],
             'description' => ['nullable', 'string', 'max:255'],
             'posted' => ['boolean'],
+        ];
+    }
+
+    public function indexButtons(): array
+    {
+        return [
+            ActionButton::make('Экспорт в CSV', route('export.transactions'))
+                ->icon('heroicons.outline.download')
+                ->primary(),
+        ];
+    }
+
+    public function indexActions(): array
+    {
+        return [
+            ExportTransactionsAction::make('Экспорт в CSV')
+                ->icon('heroicons.outline.download')
+                ->primary()
+                ->bulk(),
         ];
     }
 }

@@ -36,6 +36,8 @@ final class MoonShineLayout extends AppLayout
             MenuItem::make(AccountResource::class, 'Accounts'),
             MenuItem::make(TransactionResource::class, 'Transactions'),
             MenuItem::make(JournalEntryResource::class, 'JournalEntries'),
+            MenuItem::make('/balance-sheet', 'Balance Sheet'),
+            MenuItem::make('/export/transactions', 'Transactions Export'),
         ];
     }
 
