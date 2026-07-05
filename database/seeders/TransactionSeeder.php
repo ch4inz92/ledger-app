@@ -15,11 +15,11 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
 {
-    // Найдём счета
+    // счета
     $cash = Account::where('code', '01-01')->first();
     $revenue = Account::where('code', '02-01')->first();
 
-    // Транзакция 1
+    // ТрАнЗаКцИя 1
     $transaction = Transaction::create([
         'date' => now()->subDays(5),
         'description' => 'Оплата за услуги',
@@ -41,3 +41,5 @@ class TransactionSeeder extends Seeder
     ]);
 }
 }
+
+//УРА КОНЕЦ

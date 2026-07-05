@@ -43,7 +43,7 @@ class Transaction extends Model
             // Если транзакция уже проведена, запрещаем любые изменения
             if ($transaction->posted && $transaction->isDirty()) {
                 $dirty = $transaction->getDirty();
-                // Разрешаем только изменение поля posted (с false на true), но оно уже было проверено в saving
+                // Разрешаем только изменение поля posted (с false на true), но оно уже было проверено
                 if (count($dirty) === 1 && array_key_exists('posted', $dirty)) {
                     return;
                 }

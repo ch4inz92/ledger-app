@@ -14,7 +14,7 @@ class AccountResource extends ModelResource
     protected string $model = Account::class;
     protected string $title = 'Счета';
 
-    // Поля для СПИСКА (index)
+    // Поля для СПИСКА
     public function indexFields(): array
     {
         return [
@@ -34,12 +34,12 @@ class AccountResource extends ModelResource
         ];
     }
 
-    // Поля для ФОРМЫ (создание/редактирование)
+    // Поля для ФОРМЫ 
     public function formFields(): array
     {
         return [
             Text::make('Название', 'name')->required(),
-            Text::make('Код', 'code')->required(), // <-- убрали ->unique()
+            Text::make('Код', 'code')->required(),
             Select::make('Тип', 'type')
                 ->options([
                     'asset'     => 'Актив',
@@ -52,7 +52,7 @@ class AccountResource extends ModelResource
         ];
     }
 
-    // Поля для ДЕТАЛЬНОГО ПРОСМОТРА (detail)
+    // Поля для ДЕТАЛЬНОГО ПРОСМОТРА
     public function detailFields(): array
     {
         return [
